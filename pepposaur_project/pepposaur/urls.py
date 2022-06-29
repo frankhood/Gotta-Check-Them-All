@@ -6,7 +6,11 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", pokedex_views.CheckThemAllTemplateView.as_view(), name="check_them_all_homepage"),
+    path(
+        "",
+        pokedex_views.CheckThemAllTemplateView.as_view(),
+        name="check_them_all_homepage",
+    ),
 ]
 
 urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
