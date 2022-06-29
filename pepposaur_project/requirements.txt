@@ -1,3 +1,6 @@
 Django~=3.2
 Pillow
 djangorestframework
+# da aggiungere
+numpy==1.23
+pandas==1.4.3
