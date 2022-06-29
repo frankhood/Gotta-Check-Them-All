@@ -5,6 +5,12 @@ class Pokemon(models.Model):
     name = models.CharField("Name", max_length=255)
     slug = models.CharField("Slug", max_length=255)
     image = models.ImageField("Image")
+    typology_one = models.CharField(
+        "Typology One", max_length=500, blank=True, default=""
+    )
+    typology_two = models.CharField(
+        "Typology Two", max_length=500, blank=True, default=""
+    )
     total = models.FloatField("Total", blank=True, null=True, default=None)
     health_points = models.FloatField("HP", blank=True, null=True, default=None)
     attack = models.FloatField("Attack", blank=True, null=True, default=None)
