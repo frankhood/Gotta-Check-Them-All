@@ -10,11 +10,11 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser) -> None:
         parser.add_argument("path_file_csv", type=str, help="Insert path of csv file.")
-        parser.add_argument("path_file_image", type=str, help="Insert the path of the folder containing the iamges.")
+        parser.add_argument("path_directory_images", type=str, help="Insert the path of the folder containing the iamges.")
 
     def handle(self, *args, **options):
         path_file_csv = options['path_file_csv']
-        path_file_image = options['path_file_image']
+        path_directory_images = options['path_directory_images']
         file = open(f'{path_file_csv}', "r")
         reader = csv.reader(file)
         next(reader) # ignoro la prima riga
@@ -22,11 +22,11 @@ class Command(BaseCommand):
         for idx, row in enumerate(reader):
             idx += 1
             id_image = row[0]
-            for _, _, files in os.walk(path_file_image):
+            for _, _, files in os.walk(path_directory_images):
                 for file in files:
                     filename = file.split(".")[0]
                     if filename == id_image:
-                        with open(f"{path_file_csv}", "rb") as f:
+                        with open(f"{path_directory_images}/{file}", "rb") as f:
                             pokemon, created = Pokemon.objects.get_or_create(
                                 id=idx,
                                 slug=slugify(row[1]),
