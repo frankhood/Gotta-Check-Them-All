@@ -14,4 +14,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls'))
 ]
 
+urlpatterns += [
+    path("api/v1/", include("pokedex.apis.urls")),
+]
+
 urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
