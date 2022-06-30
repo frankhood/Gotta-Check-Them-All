@@ -1,0 +1,30 @@
+version: "3.4"
+services:
+  backend:
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    image: pepposaur_project/code
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+      target: dev
+    container_name: pepposaur_project_backend
+    working_dir: /app
+    volumes:
+      - ..:/app
+      - ~/.ssh:/root/.ssh
+      - media:/app/media
+      - ~/.gitconfig:/etc/gitconfig
+    command: "./docker/entrypoint_dev.sh"
+    ports:
+      - 127.0.0.1:${EXPOSE_PORT:-8000}:${EXPOSE_PORT:-8000}
+
+
+volumes:
+  media: {
+    "name": "pepposaur_project_media"
+  }
