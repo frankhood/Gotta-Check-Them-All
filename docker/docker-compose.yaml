@@ -17,7 +17,7 @@ services:
     volumes:
       - ..:/app
       - ~/.ssh:/root/.ssh
-      - media:/app/media
+      - media:/app/pepposaur_project/media
       - ~/.gitconfig:/etc/gitconfig
     command: "./docker/entrypoint_dev.sh"
     ports:

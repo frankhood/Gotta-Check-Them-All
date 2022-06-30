@@ -12,11 +12,11 @@ cleanup () {
 }
 
 start () {
-    pip-sync requirements.txt --pip-args "--src /root/src"
+    cd pepposaur_project/
+    pip install -r requirements.txt --src /root/src
     python manage.py migrate --noinput
 
     while true; do
-        cd pepposaur_project/
         python manage.py runserver 0.0.0.0:$EXPOSE_PORT
         wait $!
         sleep $SLEEP_AFTER_CRASH
