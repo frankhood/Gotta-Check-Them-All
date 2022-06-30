@@ -20,6 +20,7 @@ class Command(BaseCommand):
         next(reader) # ignoro la prima riga
 
         for idx, row in enumerate(reader):
+            idx += 1
             id_image = row[0]
             for _, _, files in os.walk(path_file_image):
                 for file in files:
@@ -31,8 +32,8 @@ class Command(BaseCommand):
                                 slug=slugify(row[1]),
                                 defaults={
                                     "name":row[1],
-                                    # typology_one:row[2],
-                                    # typology_two:row[3],
+                                    "typology_one":row[2],
+                                    "typology_two":row[3],
                                     "total":row[4],
                                     "health_points":row[5],
                                     "attack":row[6],
