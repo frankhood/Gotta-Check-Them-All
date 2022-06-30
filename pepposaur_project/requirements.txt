@@ -1,6 +1,7 @@
 Django~=3.2
 Pillow
 pip-tools
+django-uuslug
 djangorestframework
 # da aggiungere
 numpy==1.23
