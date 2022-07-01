@@ -30,6 +30,7 @@ class Command(BaseCommand):
                     filename = file.split(".")[0]
                     if filename == id_image:
                         with open(f"{path_directory_images}/{file}", "rb") as f:
+                            ##################### Gestione con Try Except #################
                             # try:
                             #     pokemon = Pokemon.objects.get(id=idx, slug=slugify(row[1]))
                             #     print(f"Pokemon {pokemon.name} già importato.")
@@ -52,7 +53,7 @@ class Command(BaseCommand):
                             #     )
                             #     pokemon.save()
                             #     print(f"Pokemon {pokemon.name} importato.")
-
+                            ############### Utilizzo del get_or_create di Django ######################
                             pokemon, created = Pokemon.objects.get_or_create(
                                 id=idx,
                                 slug=slugify(row[1]),
